@@ -1,56 +1,50 @@
-//import { fixupConfigRules } from "@eslint/compat";
-import reactRefresh from "eslint-plugin-react-refresh";
-import globals from "globals";
-import eslintTs from 'typescript-eslint';
-import eslintJs from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
+import globals from 'globals';
+import tsParser from '@typescript-eslint/parser';
+import eslintJs from '@eslint/js';
+import eslintTs from 'typescript-eslint';
 
-const tsFiles = ['{app,tests}/**/*.ts'];
+const filesExtensions = ['{app,tests,src}/**/*.{ts,tsx}'];
 
 const languageOptions = {
     globals: {
-        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
     },
     ecmaVersion: 2023,
     sourceType: 'module',
 };
 
-const recommendedTypeScriptConfigs = [
-    ...eslintTs.configs.recommended.map((config) => ({
-        ...config,
-        files: tsFiles,
-    })),
-    ...eslintTs.configs.stylistic.map((config) => ({
-        ...config,
-        files: tsFiles,
-    })),
-];
-
 
 const customTypescriptConfig = {
-    files: tsFiles,
+    files: filesExtensions,
     plugins: {
-        "react-refresh": reactRefresh,
         import: importPlugin,
+        'import/parsers': tsParser,
     },
-
     languageOptions: {
         ...languageOptions,
-    },
-
-    settings: {
-        react: {
-            version: "18.2",
+        parser: tsParser,
+        parserOptions: {
+            project: './tsconfig.json',
         },
     },
-
+    settings: {
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts'],
+        },
+    },
     rules: {
         ...importPlugin.configs.typescript.rules,
-        "react-refresh/only-export-components": ["warn", {
-            allowConstantExport: true,
-        }],
+        "no-unused-vars": "error",
         'import/no-duplicates': 'warn',
         "react/prop-types": 0,
+        'import/export': 'error',
+        '@typescript-eslint/no-use-before-define': 'off',
+        'require-await': 'off',
+        'no-duplicate-imports': 'error',
+        'no-unneeded-ternary': 'error',
+        'prefer-object-spread': 'error',
         '@typescript-eslint/no-unused-vars': [
             'error',
             {
@@ -58,18 +52,27 @@ const customTypescriptConfig = {
                 args: 'none',
             },
         ],
-    },
+    }
 };
 
+// Add the files for applying the recommended TypeScript configs 
+// only for the Typescript files.
+// This is necessary when we have the multiple extensions files 
+// (e.g. .ts, .tsx, .js, .cjs, .mjs, etc.).
+const recommendedTypeScriptConfigs = [
+    ...eslintTs.configs.recommended.map((config) => ({
+        ...config,
+        files: filesExtensions,
+    })),
+    ...eslintTs.configs.stylistic.map((config) => ({
+        ...config,
+        files: filesExtensions,
+    })),
+];
+
 export default [
-    { ignores: ["**/dist", "**/.eslintrc.mjs", 'docs/*', 'build/*', 'lib/*', 'dist/*'] },
+    { ignores: ["**/dist", "**/.eslintrc.cjs"] },
     eslintJs.configs.recommended,
     ...recommendedTypeScriptConfigs,
     customTypescriptConfig,
-    //...fixupConfigRules(compat.extends(
-    //    "eslint:recommended",
-    //    "plugin:react/recommended",
-    //    "plugin:react/jsx-runtime",
-    //    "plugin:react-hooks/recommended",
-    //)),
 ];
