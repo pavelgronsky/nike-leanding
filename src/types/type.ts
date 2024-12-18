@@ -18,3 +18,9 @@ export interface IProduct {
   name: string;
   price: string;
 }
+
+export interface IServices {
+  imgURL: string;
+  label: string;
+  subtext: string;
+}
