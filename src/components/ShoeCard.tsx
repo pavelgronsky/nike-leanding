@@ -6,7 +6,11 @@ interface IShoeCardProp {
   bigShoeImage: string;
 }
 
-const ShoeCard = ({ imgUrl, changeBigShoeImage, bigShoeImage }: IShoeCardProp) => {
+const ShoeCard = ({
+  imgUrl,
+  changeBigShoeImage,
+  bigShoeImage,
+}: IShoeCardProp) => {
   const handleClick = () => {
     if (bigShoeImage !== imgUrl.bigShoe) {
       changeBigShoeImage(imgUrl.bigShoe);
@@ -19,8 +23,13 @@ const ShoeCard = ({ imgUrl, changeBigShoeImage, bigShoeImage }: IShoeCardProp) =
     ${bigShoeImage === imgUrl.bigShoe ? "border-coral-red" : "border-transparent"} cursor-pointer max-sm:flex-1`}
       onClick={handleClick}
     >
-      <div className="mx-sm:p-4 flex items-center justify-center rounded-xl bg-card bg-cover bg-center sm:h-40  sm:w-40">
-        <img src={imgUrl.thumbnail} alt="shoe collection" width={127} height={103} />
+      <div className="mx-sm:p-4 flex items-center justify-center rounded-xl bg-card bg-cover bg-center sm:size-40">
+        <img
+          src={imgUrl.thumbnail}
+          alt="shoe collection"
+          width={127}
+          height={103}
+        />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ const config = {
   //singleQuote: true,
   //semi: true,
   //bracketSpacing: true,
-  printWidth: 180,
+  printWidth: 80,
   plugins: ["prettier-plugin-tailwindcss"],
 };
 

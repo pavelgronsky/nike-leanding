@@ -5,7 +5,7 @@ import eslintJs from "@eslint/js";
 import eslintTs from "typescript-eslint";
 
 import tailwind from "eslint-plugin-tailwindcss";
-import eslintPluginPrettier from "eslint-plugin-prettier";
+import eslintPluginPrettier from "eslint-plugin-prettier/recommended";
 
 const filesExtensions = ["{app,tests,src}/**/*.{ts,tsx}"];
 
@@ -64,7 +64,7 @@ const customTypescriptConfig = {
     "no-duplicate-imports": "error",
     "no-unneeded-ternary": "error",
     "prefer-object-spread": "error",
-    "no-multiple-empty-lines": "warning",
+    "no-multiple-empty-lines": 1,
     //'prettier/prettier': [
     //  'error',
     //  {
