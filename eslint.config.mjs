@@ -65,6 +65,13 @@ const customTypescriptConfig = {
     "no-unneeded-ternary": "error",
     "prefer-object-spread": "error",
     "no-multiple-empty-lines": "warning",
+    //'prettier/prettier': [
+    //  'error',
+    //  {
+    //    singleQuote: true,
+    //    parser: 'flow',
+    //  },
+    //],
   },
 };
 

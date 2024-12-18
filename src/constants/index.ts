@@ -1,34 +1,15 @@
-import {
-  facebook,
-  instagram,
-  shieldTick,
-  support,
-  truckFast,
-  twitter,
-} from "../assets/icons";
-import {
-  bigShoe1,
-  bigShoe2,
-  bigShoe3,
-  customer1,
-  customer2,
-  shoe4,
-  shoe5,
-  shoe6,
-  shoe7,
-  thumbnailShoe1,
-  thumbnailShoe2,
-  thumbnailShoe3,
-} from "../assets/images";
+import { facebook, instagram, shieldTick, support, truckFast, twitter } from "../assets/icons";
+import { bigShoe1, bigShoe2, bigShoe3, customer1, customer2, shoe4, shoe5, shoe6, shoe7, thumbnailShoe1, thumbnailShoe2, thumbnailShoe3 } from "../assets/images";
+import { IImgUrl, INavLinks, IStatistics } from "../types/type";
 
-export const navLinks = [
+export const navLinks: INavLinks[] = [
   { href: "#home", label: "Home" },
   { href: "#about-us", label: "About Us" },
   { href: "#products", label: "Products" },
   { href: "#contact-us", label: "Contact Us" },
 ];
 
-export const shoes = [
+export const shoes: IImgUrl[] = [
   {
     thumbnail: thumbnailShoe1,
     bigShoe: bigShoe1,
@@ -43,7 +24,7 @@ export const shoes = [
   },
 ];
 
-export const statistics = [
+export const statistics: IStatistics[] = [
   { value: "1k+", label: "Brands" },
   { value: "500+", label: "Shops" },
   { value: "250k+", label: "Customers" },
@@ -81,8 +62,7 @@ export const services = [
   {
     imgURL: shieldTick,
     label: "Secure Payment",
-    subtext:
-      "Experience worry-free transactions with our secure payment options.",
+    subtext: "Experience worry-free transactions with our secure payment options.",
   },
   {
     imgURL: support,
@@ -96,15 +76,13 @@ export const reviews = [
     imgURL: customer1,
     customerName: "Morich Brown",
     rating: 4.5,
-    feedback:
-      "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
+    feedback: "The attention to detail and the quality of the product exceeded my expectations. Highly recommended!",
   },
   {
     imgURL: customer2,
     customerName: "Lota Mongeskar",
     rating: 4.5,
-    feedback:
-      "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
+    feedback: "The product not only met but exceeded my expectations. I'll definitely be a returning customer!",
   },
 ];
 
