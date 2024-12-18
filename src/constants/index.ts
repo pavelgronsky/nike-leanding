@@ -20,7 +20,7 @@ import {
   thumbnailShoe2,
   thumbnailShoe3,
 } from "../assets/images";
-import { IImgUrl, INavLinks, IStatistics } from "../types/type";
+import { IImgUrl, INavLinks, IProduct, IStatistics } from "../types/type";
 
 export const navLinks: INavLinks[] = [
   { href: "#home", label: "Home" },
@@ -50,7 +50,7 @@ export const statistics: IStatistics[] = [
   { value: "250k+", label: "Customers" },
 ];
 
-export const products = [
+export const products: IProduct[] = [
   {
     imgURL: shoe4,
     name: "Nike Air Jordan-01",

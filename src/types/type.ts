@@ -12,3 +12,9 @@ export interface INavLinks {
   href: string;
   label: string;
 }
+
+export interface IProduct {
+  imgURL: string;
+  name: string;
+  price: string;
+}
