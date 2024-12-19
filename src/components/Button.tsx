@@ -4,6 +4,7 @@ interface IButtonProps {
   backgroundColor?: string;
   borderColor?: string;
   textColor?: string;
+  fullWidth?: boolean;
 }
 
 const Button = ({
@@ -12,11 +13,14 @@ const Button = ({
   backgroundColor,
   borderColor,
   textColor,
+  fullWidth,
 }: IButtonProps) => {
   return (
     <button
       className={`flex items-center justify-center gap-2 rounded-full border px-7 py-4 font-montserrat text-lg leading-none
-        ${backgroundColor ? `${backgroundColor} ${borderColor} ${textColor}` : "border-coral-red bg-coral-red text-white"}`}
+        ${backgroundColor ? `${backgroundColor} ${borderColor} ${textColor}` : "border-coral-red bg-coral-red text-white"}
+        ${fullWidth && "w-full"}
+        `}
       onClick={() => alert("Click me")}
     >
       {label}
